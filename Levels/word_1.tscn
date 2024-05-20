@@ -1,37 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2rkev8cn4mm0"]
+[gd_scene load_steps=8 format=3 uid="uid://d2rkev8cn4mm0"]
 
-[ext_resource type="Texture2D" uid="uid://da1ecboo4ur6s" path="res://Assets/Sprite Pack 2/2 - Mr. Mochi/Idle (32 x 32).png" id="1_21dgj"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_v3fi8"]
+[ext_resource type="PackedScene" uid="uid://dn5tbt868h4de" path="res://Actors/player.tscn" id="3_iggp0"]
 [ext_resource type="Texture2D" uid="uid://doqbklpcmtmdl" path="res://Assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="3_s3js7"]
 [ext_resource type="Texture2D" uid="uid://brn1rj636hag5" path="res://Assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="4_bgk67"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qshco"]
-atlas = ExtResource("1_21dgj")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_10ms8"]
-atlas = ExtResource("1_21dgj")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dy6t8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qshco")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_10ms8")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_25323"]
-size = Vector2(16.5, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddsut"]
-size = Vector2(289.75, 20)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_31c0s"]
 tile_data = PackedInt32Array(0, 327681, 1)
@@ -259,26 +230,6 @@ pattern_0 = SubResource("TileMapPattern_31c0s")
 
 [node name="Word-1" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_v3fi8")
-
-[node name="animationPlayer" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(138, 260)
-sprite_frames = SubResource("SpriteFrames_dy6t8")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.3156
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(137, 266)
-shape = SubResource("RectangleShape2D_25323")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(367, 204)
-shape = SubResource("RectangleShape2D_ddsut")
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_g7uh5")
 format = 2
@@ -286,3 +237,6 @@ layer_0/name = "ground"
 layer_0/tile_data = PackedInt32Array(1245184, 196608, 2, 1179648, 196608, 1, 1179649, 262144, 1, 1179650, 262144, 1, 1179651, 262144, 1, 1179652, 262144, 1, 1179653, 262144, 1, 1179654, 262144, 1, 1179655, 262144, 1, 1179656, 262144, 1, 1179657, 262144, 1, 1179658, 262144, 1, 1179659, 262144, 1, 1179660, 262144, 1, 1179661, 262144, 1, 1179662, 262144, 1, 1179663, 262144, 1, 1179664, 262144, 1, 1179665, 262144, 1, 1179666, 262144, 1, 1179667, 262144, 1, 1179668, 262144, 1, 1179669, 262144, 1, 1179670, 262144, 1, 1179671, 262144, 1, 1179672, 262144, 1, 1179673, 262144, 1, 1179674, 262144, 1, 1179675, 262144, 1, 1179676, 262144, 1, 1179677, 262144, 1, 1179678, 262144, 1, 1179679, 262144, 1, 1179680, 262144, 1, 1245216, 262144, 2, 1245215, 262144, 2, 1245214, 262144, 2, 1245213, 262144, 2, 1245212, 262144, 2, 1245211, 262144, 2, 1245210, 262144, 2, 1245209, 262144, 2, 1245208, 262144, 2, 1245207, 262144, 2, 1245206, 262144, 2, 1245205, 262144, 2, 1245204, 262144, 2, 1245203, 262144, 2, 1245202, 262144, 2, 1245201, 262144, 2, 1245200, 262144, 2, 1245199, 262144, 2, 1245198, 262144, 2, 1245197, 262144, 2, 1245196, 262144, 2, 1245195, 262144, 2, 1245194, 262144, 2, 1245193, 262144, 2, 1245192, 262144, 2, 1245191, 262144, 2, 1245190, 262144, 2, 1245189, 262144, 2, 1245188, 262144, 2, 1245187, 262144, 2, 1245186, 262144, 2, 1245185, 262144, 2)
 layer_1/name = "tree"
 layer_1/tile_data = PackedInt32Array()
+
+[node name="Player" parent="." instance=ExtResource("3_iggp0")]
+position = Vector2(213, 209)
